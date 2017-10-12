@@ -18,15 +18,6 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-  def update
-    @category = Category.find(params[:id])
-    if @category.update(category_params)
-      redirect_to(@category)
-    else
-      render 'index'
-    end
-  end
-
   private
 
   def category_params
