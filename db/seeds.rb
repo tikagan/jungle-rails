@@ -133,15 +133,15 @@ cat3.products.create!({
 })
 
 user1 = User.create!({
-   first_name: 'Bojack',
-   last_name: 'Horseman',
+   firstname: 'Bojack',
+   lastname: 'Horseman',
    email: 'bojack@bojack.com',
    password_digest: BCrypt::Password.create("aoeu")
  })
 
  user2 = User.create!({
-   first_name: 'Princess',
-   last_name: 'Caroline',
+   firstname: 'Princess',
+   lastname: 'Caroline',
    email: 'me@princesscaroline.com',
    password_digest: BCrypt::Password.create("aoeu")
  })
