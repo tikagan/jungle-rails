@@ -26,11 +26,31 @@
       </div>
     </div>
     <hr>
-    <div class="col-sm-8">
+    <div class="col-sm-12 col-sm-offset-0">
       <h3>Reviews</h3>
-      <% @product.reviews.each do |review| %>
-        <%= render 'review', review: review %>
+      <% if !@product.reviews.empty? %>
+        <% @product.reviews.each do |review| %>
+          <%= render 'review', review: review %>
+      <% end %>
       <% end %>
     </div>
+
+    <% if current_user %>
+      <h3>Leave a review!</h3>
+      <%= form_for(:review, options = {url: product_reviews_path}) do |form| %>
+        <div class="form-group">
+          <label for="review_description">Review Description:</label>
+          <%= form.text_field :description, class: 'form-control'%>
+        </div>
+        <div class="form-group">
+          <label for="review_rating">Rating:</label>
+          <%= form.select :rating, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1], class: 'form-control'%>/10
+        </div>
+        <%= form.submit 'Submit Review', class: 'btn btn-primary' %>
+      <% end %>
+    <% else %>
+      <br>
+      <h4>Please login or signup to leave a review</h4>
+    <% end %>
   </article>
 </section>
