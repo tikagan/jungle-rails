@@ -132,5 +132,54 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+user1 = User.create!({
+   first_name: 'Bojack',
+   last_name: 'Horseman',
+   email: 'bojack@bojack.com',
+   password_digest: BCrypt::Password.create("aoeu")
+ })
+
+ user2 = User.create!({
+   first_name: 'Princess',
+   last_name: 'Caroline',
+   email: 'me@princesscaroline.com',
+   password_digest: BCrypt::Password.create("aoeu")
+ })
+
+ user1.reviews.create!({
+   product_id: 1,
+   description: Faker::Hipster.paragraph(1),
+   rating: rand(1...11)
+ })
+
+ user1.reviews.create!({
+   product_id: 3,
+   description: Faker::Hipster.paragraph(1),
+   rating: rand(1...11)
+ })
+
+ user1.reviews.create!({
+   product_id: 6,
+   description: Faker::Hipster.paragraph(1),
+   rating: rand(1...11)
+ })
+
+ user2.reviews.create!({
+   product_id: 8,
+   description: Faker::Hipster.paragraph(1),
+   rating: rand(1...11)
+ })
+
+ user2.reviews.create!({
+   product_id: 9,
+   description: Faker::Hipster.paragraph(1),
+   rating: rand(1...11)
+ })
+
+ user2.reviews.create!({
+   product_id: 11,
+   description: Faker::Hipster.paragraph(1),
+   rating: rand(1...11)
+ })
 
 puts "DONE!"
