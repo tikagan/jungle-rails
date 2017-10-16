@@ -29,7 +29,7 @@
     <div class="col-sm-12 col-sm-offset-0">
       <h3>Reviews</h3>
       <% if !@product.reviews.empty? %>
-        <% @product.reviews.each do |review| %>
+        <% @ordered_reviews.each do |review| %>
           <%= render 'review', review: review %>
       <% end %>
       <% end %>
