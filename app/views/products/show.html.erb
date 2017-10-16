@@ -22,6 +22,10 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          <% if Review.where(product_id: @product.id).present? %>
+            <dt>Overall Rating</dt>
+            <dd><%= Review.where(product_id: @product.id).average(:rating).floor %></dd>
+          <% end %>
         </dl>
       </div>
     </div>
