@@ -37,7 +37,7 @@
 
     <% if current_user %>
       <h3>Leave a review!</h3>
-      <%= form_for(:review, options = {url: product_reviews_path}) do |form| %>
+      <%= form_for(:review, options = {url: product_reviews_path(@product)}) do |form| %>
         <div class="form-group">
           <label for="review_description">Review Description:</label>
           <%= form.text_field :description, class: 'form-control'%>
