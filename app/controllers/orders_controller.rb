@@ -4,15 +4,6 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def email_receipt(user)
-    @order = Order.find(params[:id])
-
-    respond do |format|
-      Mailer.receipt(@order).deliver.now
-      format.html {redirect_to(@order)}
-    end
-  end
-
   def create
     charge = perform_stripe_charge
     order  = create_order(charge)
@@ -39,7 +30,7 @@ class OrdersController < ApplicationController
     Stripe::Charge.create(
       source:      params[:stripeToken],
       amount:      cart_total, # in cents
-      description: "Khurram Virani's Jungle Order'"
+      description: params[:description],
       currency:    'cad'
     )
   end
